@@ -20,5 +20,6 @@ from . import views
 app_name = 'finchart'
 
 urlpatterns = [
-    path('', views.IndexTemplateView.as_view(), name='index'),
+    # path('', views.IndexTemplateView.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
 ]
