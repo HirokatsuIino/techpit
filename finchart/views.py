@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.views.generic import DetailView
 from .models import Company
 from .models import Fstatement
+from django.views.generic.list import MultipleObjectMixin
 
 
 # class IndexTemplateView(TemplateView):
@@ -22,18 +23,15 @@ class IndexView(TemplateView):
         return params
 
 
-class CompanyView(DetailView):
+class CompanyView(DetailView, MultipleObjectMixin):
     model = Company
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
-        company_name = kwargs['object'].name
-        fstatement_list = Fstatement.objects.filter(company=kwargs['object']).order_by('-fiscal_year')[:4]
-        params = {
-            'company_name': company_name,
-            'fstatement_list': fstatement_list,
-        }
-        return params
+        object_list = Fstatement.objects.filter(company=kwargs['object']).order_by('-fiscal_year')
+        context = super(CompanyView, self).get_context_data(object_list=object_list, **kwargs)
 
+        return context
 
 class FstatementView(DetailView):
     model = Fstatement
