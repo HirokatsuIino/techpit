@@ -1,5 +1,6 @@
 from django.db import models
-
+# TODO numpy
+# import numpy
 
 # Create your models here.
 class Company(models.Model):
@@ -38,6 +39,7 @@ class Fstatement(models.Model):
 
     # 総資産に対する流動資産の比率を計算（流動資産／総資産）
     def current_assets_rate(self):
+        # TODO numpy.float64
         f = self.bs_current_assets / self.bs_total_assets() * 100
         return f
 
@@ -94,4 +96,22 @@ class Fstatement(models.Model):
     # キャッシュフロー合計を計算
     def cf_total_amount(self):
         f = self.cf_operating + self.cf_investment + self.cf_finance
+        return f
+
+    # 流動比率を計算
+    def current_rate(self):
+        if self.bs_current_liabilities > 0:
+            f = self.bs_current_assets / self.bs_current_liabilities * 100
+        else:
+            f = '-'
+        return f
+
+    # ＲＯＥを計算
+    def roe(self):
+        f = self.pl_operating_profit / self.bs_net_assets * 100
+        return f
+
+    #　ＲＯＡを計算
+    def roa(self):
+        f = self.pl_operating_profit / self.bs_total_assets() * 100
         return f
