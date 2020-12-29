@@ -81,6 +81,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # TODO mysql導入
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql', # 変更
+    #     'NAME': 'database_name', # プロジェクトで使用するデータベース名
+    #     'USER': 'root', # パソコンにインストールしたMySQLのユーザー名
+    #     'PASSWORD': '', # 同上。そのパスワード
+    # }
 }
 
 
