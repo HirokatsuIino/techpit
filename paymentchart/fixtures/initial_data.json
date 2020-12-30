@@ -1,0 +1,10 @@
+[
+  {
+    "model": "paymentchart.PaymentItem",
+    "pk": 2,
+    "fields": {
+      "payment_name": "ピアノレッスン料",
+      "payment_value": "3500"
+    }
+  }
+]
