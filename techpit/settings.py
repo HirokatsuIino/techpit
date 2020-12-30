@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'finchart',
     'django.contrib.humanize',
+    'paymentchart',
+
 ]
 
 MIDDLEWARE = [
