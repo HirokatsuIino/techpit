@@ -17,7 +17,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'finchart'
+app_name = 'paychart'
 
 urlpatterns = [
     path('', views.IndexTemplateView.as_view(), name='index'),
