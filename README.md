@@ -4,3 +4,7 @@
 Python（Django）
 chart.js
 
+### マイグレーション
+python manage.py makemigrations finchart
+
+python manage.py migrate finchart
