@@ -28,7 +28,7 @@
   },
   {
     "model": "paymentchart.PaymentItem",
-    "pk": 4,
+    "pk": 7,
     "fields": {
       "payment_data": "2020-10-11",
       "payment_name": "ピアノレッスン料",
@@ -55,11 +55,20 @@
   },
   {
     "model": "paymentchart.PaymentItem",
-    "pk": 7,
+    "pk": 4,
     "fields": {
       "payment_data": "2020-07-11",
       "payment_name": "ピアノレッスン料",
       "payment_value": "3500"
+    }
+  },
+    {
+    "model": "paymentchart.PaymentItem",
+    "pk": 8,
+    "fields": {
+      "payment_data": "2020-07-03",
+      "payment_name": "創英中",
+      "payment_value": "16000"
     }
   }
 ]
