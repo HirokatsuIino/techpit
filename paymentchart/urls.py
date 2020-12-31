@@ -21,4 +21,5 @@ app_name = 'paychart'
 
 urlpatterns = [
     path('', views.PaymentItemListView.as_view(), name='index'),
+    path('/<int:pk>', views.PaymentItemDetail.as_view(), name='detail'),
 ]
