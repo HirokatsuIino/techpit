@@ -38,3 +38,12 @@ class PaymentItemListView(generic.ListView):
 class PaymentItemDetail(generic.DetailView):
     model = PaymentItem
     # template_name = 'amazon/item_detail.html'
+
+    def get_context_data(self, **kwargs):
+        object_list = PaymentItem.objects.filter(bank__id=self.kwargs['pk'])
+        bank_name = PaymentItem.objects.values_list('bank__bank_name', flat=True).filter(bank__id=self.kwargs['pk']).first()
+        params = {
+            'object_list': object_list,
+            'bank_name': bank_name,
+        }
+        return params
