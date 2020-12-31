@@ -1,15 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.views.generic import ListView
-from django.views.generic import ListView
+from django.views import generic
 from .models import PaymentItem
 from .forms import PaymentItemForm
 from django.views.generic.edit import ModelFormMixin
 
 
 # Create your views here.
-class PaymentItemListView(ListView):
+class PaymentItemListView(generic.ListView):
     model = PaymentItem
     # form_class = PaymentItemForm
     # template_name = 'paymentchart/paymentitem_list.html'
@@ -35,3 +33,8 @@ class PaymentItemListView(ListView):
     #     else:
     #         self.object = self.get_object()
     #         return self.form_invalid(form)
+
+
+class PaymentItemDetail(generic.DetailView):
+    model = PaymentItem
+    # template_name = 'amazon/item_detail.html'
