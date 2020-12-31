@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
@@ -14,8 +15,13 @@ class PaymentItemListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         payment_list = PaymentItem.objects.all().order_by('-payment_data')
+        groupby_bank = PaymentItem.objects.values('bank__bank_code', 'bank__bank_name').annotate(
+            total=Sum('payment_value'),
+        ).order_by('bank__bank_code').reverse()
+
         params = {
             'payment_list': payment_list,
+            'groupby_bank': groupby_bank,
         }
         return params
 
