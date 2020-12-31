@@ -8,3 +8,7 @@ chart.js
 python manage.py makemigrations finchart
 
 python manage.py migrate finchart
+
+
+### データ投入
+python manage.py loaddata initial_data.json
