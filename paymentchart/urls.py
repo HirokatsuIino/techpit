@@ -20,5 +20,5 @@ from . import views
 app_name = 'paychart'
 
 urlpatterns = [
-    path('', views.IndexTemplateView.as_view(), name='index'),
+    path('', views.PaymentItemListView.as_view(), name='index'),
 ]
