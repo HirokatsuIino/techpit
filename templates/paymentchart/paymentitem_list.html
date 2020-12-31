@@ -10,7 +10,7 @@
         $("#payment_list").DataTable({
             "searching": true,     //検索ボックスでのテキスト検索を可能にする
             "paging":   true,      //ページングを可能にする
-            "ordering": true,      //各項目でのソートを可能にする
+            "ordering": false,      //各項目でのソートを可能にする
             "lengthChange": true,  //件数の切り替え機能を可能にする
 
             }).columns.adjust().draw();
@@ -24,36 +24,51 @@
         <thead>
             <tr>
                 <th class="text-center" width="40%" hidden>ID</th>
+                <th class="text-center" width="40%">支払い方法</th>
                 <th class="text-center" width="40%">支払い月日</th>
                 <th class="text-center" width="40%">支払い項目</th>
                 <th class="text-center" width="40%">支払い金額</th>
-                <th class="text-center">LINK</th>
+{#                <th class="text-center">LINK</th>#}
             </tr>
         </thead>
         <tbody>
             {% for item in payment_list %}
             <tr class="odd gradeX text-center">
                 <td class="text-center" hidden>{{ item.pk}}</td>
+                <td class="text-center"><a href="{% url 'paychart:detail' item.pk %}">{{ item.bank.bank_name}}</a></td>
                 <td class="text-center">{{ item.payment_data}}</td>
                 <td class="text-center">{{ item.payment_name}}</td>
                 <td class="text-center">¥{{ item.payment_value }}</td>
-                <td><a href="">詳細へ</a></td>
+{#                <td><a href="">詳細へ</a></td>#}
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <form action="" method="POST">
-        {{ form.non_field_errors }}
-        {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                {{ field }}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">投稿</button>
-    </form>
-
+{#    <div class="col-md-6">#}
+{#            <div class="card">#}
+{#                <div class="card-header d-flex align-items-center">#}
+{#                    <h3 class="h4">内訳</h3>#}
+{#                </div><!--card header-->#}
+{#                <div class="card-body">#}
+{#                    <canvas id="pie_liabilities" width="400" height="400"></canvas>#}
+{#                    <script>#}
+{#                        var ctx = document.getElementById('pie_liabilities');#}
+{#                        var data_current_liabilities = '{{object.payment_name}}';#}
+{#                        var data_fixed_liabilities = '{{object.bs_fixed_liabilities}}';#}
+{#                        var data_net_assets = '{{object.bs_net_assets}}';#}
+{#                        var pie_liabilities = new Chart(ctx, {#}
+{#                            type: 'pie',#}
+{#                            data: {#}
+{#                                labels: ['流動負債','固定負債','純資産'],#}
+{#                                datasets: [{#}
+{#                                    backgroundColor: ['rgba(255, 99, 132, 0.8)','rgba(54, 162, 235, 0.8)','rgba(153, 102, 255, 0.8)'],#}
+{#                                    data: [data_current_liabilities, data_fixed_liabilities,data_net_assets]#}
+{#                                }]#}
+{#                            },#}
+{#                        });#}
+{#                    </script>#}
+{#                </div><!-- class card body -->#}
+{#            </div><!-- class card -->#}
+{#        </div>#}
 {% endblock %}
