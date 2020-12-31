@@ -63,6 +63,7 @@
                 <th class="text-center" width="40%">支払い月日</th>
                 <th class="text-center" width="40%">支払い項目</th>
                 <th class="text-center" width="40%">支払い金額</th>
+                <th class="text-center" width="40%">支払い状況</th>
 {#                <th class="text-center">LINK</th>#}
             </tr>
         </thead>
@@ -74,6 +75,7 @@
                 <td class="text-center">{{ item.payment_data}}</td>
                 <td class="text-center">{{ item.payment_name}}</td>
                 <td class="text-center">¥{{ item.payment_value }}</td>
+                <td class="text-center">{{ item.result.result_name }}</td>
 {#                <td><a href="">詳細へ</a></td>#}
             </tr>
             {% endfor %}
