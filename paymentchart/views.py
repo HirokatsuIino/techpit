@@ -13,7 +13,7 @@ class PaymentItemListView(generic.ListView):
     # template_name = 'paymentchart/paymentitem_list.html'
 
     def get_context_data(self, **kwargs):
-        payment_list = PaymentItem.objects.all()
+        payment_list = PaymentItem.objects.all().order_by('-payment_data')
         params = {
             'payment_list': payment_list,
         }
