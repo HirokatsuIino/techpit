@@ -21,7 +21,7 @@ app_name = 'finchart'
 
 urlpatterns = [
     # path('', views.IndexTemplateView.as_view(), name='index'),
-    path('', views.IndexView.as_view(), name='index'),
-    path('company/<int:pk>', views.CompanyView.as_view(), name='company'),
-    path('fstatement_detail/<int:pk>', views.FstatementView.as_view(), name='fstatement'),
+    path('/', views.IndexView.as_view(), name='index'),
+    path('/company/<int:pk>', views.CompanyView.as_view(), name='company'),
+    path('/fstatement_detail/<int:pk>', views.FstatementView.as_view(), name='fstatement'),
 ]
