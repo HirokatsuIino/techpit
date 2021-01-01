@@ -1,11 +1,29 @@
 [
   {
+    "model": "paymentchart.PaymentResult",
+    "pk": 1,
+    "fields": {
+      "result_name": "未払い",
+      "result_status": "0"
+    }
+  },
+  {
+    "model": "paymentchart.PaymentResult",
+    "pk": 2,
+    "fields": {
+      "result_name": "支払い済",
+      "result_status": "1"
+    }
+  },
+  {
     "model": "paymentchart.PaymentItem",
     "pk": 1,
     "fields": {
       "payment_data": "2020-12-17",
       "payment_name": "創英中",
-      "payment_value": "16000"
+      "payment_value": "16000",
+      "bank": 1,
+      "result": 1
     }
   },
   {
@@ -14,7 +32,9 @@
     "fields": {
       "payment_data": "2020-12-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 2
     }
   },
   {
@@ -23,7 +43,9 @@
     "fields": {
       "payment_data": "2020-11-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 1
     }
   },
   {
@@ -32,7 +54,9 @@
     "fields": {
       "payment_data": "2020-10-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 1
     }
   },
   {
@@ -41,7 +65,9 @@
     "fields": {
       "payment_data": "2020-09-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 1
     }
   },
   {
@@ -50,7 +76,9 @@
     "fields": {
       "payment_data": "2020-08-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 1
     }
   },
   {
@@ -59,7 +87,9 @@
     "fields": {
       "payment_data": "2020-07-11",
       "payment_name": "ピアノレッスン料",
-      "payment_value": "3500"
+      "payment_value": "3500",
+      "bank": 2,
+      "result": 1
     }
   },
     {
@@ -68,7 +98,9 @@
     "fields": {
       "payment_data": "2020-07-03",
       "payment_name": "創英中",
-      "payment_value": "16000"
+      "payment_value": "16000",
+      "bank": 1,
+      "result": 2
     }
   }
 ]
