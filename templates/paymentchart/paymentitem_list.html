@@ -81,6 +81,22 @@
             {% endfor %}
         </tbody>
     </table>
+    <section class="tables">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">支払い推移グラフ</h3>
+                        </div><!--card header-->
+                        <div class="card-body">
+                            <canvas id="myChart" width="400" height="200"></canvas>
+                            <script>
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var label_fyear = [ {% for item in payment_list reversed %} "{{ item.payment_data }}", {% endfor %}];
+                                var data_sales = [ {% for item in payment_list reversed %} {{item.payment_value}}, {% endfor %} ];
+                                {#var data_gross_profit = [ {% for item in object_list reversed %} {{item.pl_gross_profit}}, {% endfor %} ];#}
+                                {#var data_operating_profit = [ {% for item in object_list reversed %} {{item.pl_operating_profit}}, {% endfor %} ];#}
 
                                 {#var data_total_assets = [ {% for item in object_list reversed %} {{item.bs_total_assets }}, {% endfor %} ];#}
                                 {#var data_fixed_liabilities = [ {% for item in object_list reversed %} {{item.bs_fixed_liabilities }}, {% endfor %} ];#}
