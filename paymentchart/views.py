@@ -53,3 +53,31 @@ class PaymentItemDetail(generic.DetailView):
             'bank_name': bank_name,
         }
         return params
+
+
+class PaymentItemCreateView(generic.CreateView):
+    model = PaymentItem
+    form_class = PaymentItemForm
+    # template_name = 'paymentchart/paymentitem_detail.html'
+
+    def form_valid(self, form):
+        review = form.save(commit=False)
+        print(review)
+        print('def form_valid')
+        # review.product = self.get_object()
+        # review.save()
+        return HttpResponseRedirect(self.request.path_info)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        print(form)
+        print('def post')
+        if form.is_valid():
+            print('if form.is_valid():')
+            return self.form_valid(form)
+        else:
+            print('else')
+            self.object = self.get_object()
+            print(self.object)
+            return self.form_invalid(form)
+
