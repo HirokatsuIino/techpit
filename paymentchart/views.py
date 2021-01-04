@@ -1,6 +1,6 @@
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import PaymentItem
 from .forms import PaymentItemForm
@@ -58,26 +58,39 @@ class PaymentItemDetail(generic.DetailView):
 class PaymentItemCreateView(generic.CreateView):
     model = PaymentItem
     form_class = PaymentItemForm
-    # template_name = 'paymentchart/paymentitem_detail.html'
+    template_name = 'paymentchart/paymentitem_form.html'
+    # success_url = "/"
 
     def form_valid(self, form):
-        review = form.save(commit=False)
-        print(review)
+        result = form.save(commit=False)
+        print('log class PaymentItemCreateView(generic.CreateView): -----S')
         print('def form_valid')
-        # review.product = self.get_object()
-        # review.save()
-        return HttpResponseRedirect(self.request.path_info)
+        print(result.payment_data)
+        print(result.payment_name)
+        print(result.payment_value)
+        print(result.bank)
+        print(result.result)
+        print('log class PaymentItemCreateView(generic.CreateView): -----E')
+
+        result.payment_data = result.payment_data
+        result.payment_name = result.payment_name
+        result.payment_value = result.payment_value
+        result.bank = result.bank
+        result.result = result.result
+        result.save()
+
+        return redirect('paychart:index')
+        # 追加で登録するばい
+        # return HttpResponseRedirect(self.request.path_info)
 
     def post(self, request, *args, **kwargs):
+        print('log class PaymentItemCreateView(generic.CreateView): -----S')
+        print('def post(self, request, *args, **kwargs):')
         form = self.get_form()
-        print(form)
-        print('def post')
         if form.is_valid():
             print('if form.is_valid():')
             return self.form_valid(form)
         else:
             print('else')
-            self.object = self.get_object()
-            print(self.object)
-            return self.form_invalid(form)
-
+            print('log class PaymentItemCreateView(generic.CreateView): -----E')
+            return render(request, self.template_name, {'form': form})
